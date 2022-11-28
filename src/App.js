@@ -1,4 +1,9 @@
 import React from 'react'
+import { CreateTodoButton } from './components/CreateTodoButton';
+import { TodoCounter } from './components/TodoCounter';
+import { TodoItem } from './components/TodoItem';
+import { TodoList } from './components/TodoList';
+import { TodoSearch } from './components/TodoSearch';
 const todos = [
   {text:'cut onion', completed:false},
   {text:'take course intro react', completed:false},
@@ -7,18 +12,16 @@ const todos = [
 const App = () => {
   return (
     <>
-    <TodoCounter />
-    <h2>Has completado 2 de 3 TODOs</h2>
-    <TodoSearch />
-    <input placeholder='Cebolla'/>
-    <TodoList>
-    {todos.map(todo => (
-    <TodoItem />
-    ))}
-    </TodoList>
-    <CreateTodoButton />
-    <button>+</button>
-    </>
+      <TodoCounter />
+      <TodoSearch />
+      <TodoList>
+      {todos.map(todo => (
+      <TodoItem todo.text />
+      ))}
+      </TodoList>
+      <CreateTodoButton />
+    
+  </>
   );
   }
 export default App
