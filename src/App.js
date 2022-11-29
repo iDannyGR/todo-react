@@ -16,7 +16,7 @@ const App = () => {
       <TodoSearch />
       <TodoList>
       {todos.map(todo => (
-      <TodoItem todo.text />
+      <TodoItem key={todo.text} text = {todo.text} />
       ))}
       </TodoList>
       <CreateTodoButton />
