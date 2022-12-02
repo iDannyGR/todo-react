@@ -4,7 +4,8 @@
     font-family: 'Dosis';
 }
 #root{
-    margin: 0 24px;
+    margin:0 24px;
     position: relative;
     min-height: 100vh;
+    border: 1px solid black;
 }
