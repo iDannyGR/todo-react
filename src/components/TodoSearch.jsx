@@ -3,7 +3,7 @@ import './css/TodoSearch.css'
 
 const TodoSearch = () => {
   return (
-    <input type="text" placeholder='Cebolla' className='TodoSearch'/>
+    <input type="text" placeholder='Search Item' className='TodoSearch'/>
   )
 }
 
