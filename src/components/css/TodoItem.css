@@ -45,4 +45,5 @@
   }
   .Icon-delete:hover {
     color: red;
+    text-shadow: 5px 1px 15px red;
   }
