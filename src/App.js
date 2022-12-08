@@ -5,7 +5,7 @@ import { TodoItem } from './components/TodoItem';
 import { TodoList } from './components/TodoList';
 import { TodoSearch } from './components/TodoSearch';
 const todos = [
-  {text:'cut onion', completed:true},
+  {text:'cut onion', completed:false},
   {text:'take course intro react', completed:false},
   {text:'cry', completed:false},
 ]
