@@ -8,22 +8,24 @@ const example = [
   {text:'cut onion', completed:true},
   {text:'take course intro react', completed:false},
   {text:'cry', completed:false},
+  {text:'try cry', completed:false},
 ]
 const App = () => {
   const [todos, setTodos] = useState(example);
   const [search, setsearch] = useState('');
-  const completedTodo = todos.filter(todo=> !!todo.completed).length;
+
+  const completedTodo = todos.filter(todo=> todo.completed).length;
   //  doble admiracion es para validar si es true
   const totalTodos = todos.length;
 
   let searchTodo = [];
-   (!searchTodo.length >= 1 ) ? 
+
+   (!search.length >= 1 ) ? 
     searchTodo = todos :
     searchTodo = todos.filter(todo => {
-      const todotext = todo.text.toLowerCase();
-      const searchText = search.toLowerCase();
-     return todotext.includes(searchText);
+     return todo.text.toLowerCase().includes(search.toLowerCase() );
     }) ;
+    
   return (
     <>
       <TodoCounter 
