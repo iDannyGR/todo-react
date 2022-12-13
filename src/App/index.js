@@ -1,14 +1,24 @@
 import {useState} from 'react';
 import './index.css';
 import { AppUI } from './AppUI';
-const example = [
-  {text:'cut onion', completed:false},
-  {text:'take course intro react', completed:false},
-  {text:'cry', completed:false},
-  {text:'try cry', completed:false},
-]
+// const example = [
+//   {text:'cut onion', completed:false},
+//   {text:'take course intro react', completed:false},
+//   {text:'cry', completed:false},
+//   {text:'try cry', completed:false},
+// ]
 const App = () => {
-  const [todos, setTodos] = useState(example);
+
+  const localStorageTodos= localStorage.getItem('TODOS_V1');
+  let parsedTodos;
+ if(!localStorageTodos) { 
+    localStorage.setItem('TODOS_V1',JSON.stringify([]));
+    parsedTodos=[];
+  } else {
+   parsedTodos = JSON.parse(localStorageTodos);
+  };
+
+  const [todos, setTodos] = useState(parsedTodos);
   const [search, setsearch] = useState('');
 
   const completedTodos = todos.filter(todo=> todo.completed).length;
@@ -22,7 +32,10 @@ const App = () => {
     searchTodo = todos.filter(todo => {
      return todo.text.toLowerCase().includes(search.toLowerCase() );
     }) ;
+    const saveTodos = (newTodo) =>{
 
+    };
+    
     const finishedTodo =  (title)=>{
       const index = todos.findIndex(todo => todo.text === title);
       const newTodos = [...todos];
