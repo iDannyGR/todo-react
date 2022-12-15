@@ -37,8 +37,7 @@ const App = () => {
     console.log('antes del useeffects');
     useEffect(() => {
       console.log('use effect');
-    }, []
-    )
+    }, [totalTodos])
     console.log('antes del useeffects');
     
 
