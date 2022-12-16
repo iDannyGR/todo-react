@@ -4,7 +4,7 @@ import { AppUI } from './AppUI';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 
 const App = () => {
-  const [todos, saveTodos] = useLocalStorage('TODOS_V1',[])
+  const {item:todos, saveItem:saveTodos, loading, error} = useLocalStorage('TODOS_V1',[]);
   const [search, setsearch] = useState('');
   
   const completedTodos = todos.filter(todo=> todo.completed).length;
@@ -34,11 +34,11 @@ const App = () => {
       newTodos.splice(index,1);
       saveTodos(newTodos);
     };
-    console.log('antes del useeffects');
+
     useEffect(() => {
       console.log('use effect');
     }, [totalTodos])
-    console.log('antes del useeffects');
+   
     
 
 
@@ -52,6 +52,8 @@ const App = () => {
       finishedTodo = {finishedTodo}
       deleteTodo = {deleteTodo}
       searchTodo = {searchTodo}
+      loading={loading}
+      error={error}
     />
     </>
   );

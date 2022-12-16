@@ -12,7 +12,9 @@ const AppUI = ({
       setsearch,
       finishedTodo,
       deleteTodo,
-      searchTodo
+      searchTodo,
+      loading,
+      error
 }) => {
   return (
     <>
@@ -25,6 +27,10 @@ const AppUI = ({
             setsearch={setsearch} 
         />
         <TodoList>
+          {error && <p>Error en Carga</p>}
+          {loading && <p>Cargando datos</p>}
+          { (!loading && !searchTodo.length) && <p>Añade tu primer Todo-s</p>}
+
         {searchTodo.map(todo => (
         <TodoItem 
             completed={todo.completed} 
