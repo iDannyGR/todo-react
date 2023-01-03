@@ -1,6 +1,6 @@
-import { createContext } from 'react'; 
-export const TodoContext = createContext();
+import { createContext,useState, useEffect } from 'react'; 
 import { useLocalStorage } from '../hooks/useLocalStorage';
+const TodoContext = createContext();
 
 function TodoProvider(props) {
     const {item:todos, saveItem:saveTodos, loading, error} = useLocalStorage('TODOS_V1',[]);
@@ -17,9 +17,7 @@ function TodoProvider(props) {
       searchTodo = todos.filter(todo => {
        return todo.text.toLowerCase().includes(search.toLowerCase() );
       }) ;
-  
-    
-      
+
       const finishedTodo =  (title)=>{
         const index = todos.findIndex(todo => todo.text === title);
         const newTodos = [...todos];
@@ -34,26 +32,28 @@ function TodoProvider(props) {
         saveTodos(newTodos);
       };
   
-      useEffect(() => {
-        console.log('use effect');
-      }, [totalTodos])
+      // useEffect(() => {
+      //   console.log('use effect');
+      // }, [totalTodos])
      
       
   
     return(
         <TodoContext.Provider value={{ 
             completedTodos,
-            totalTodo,
-            search ,
+            totalTodos,
+            search,
             setsearch,
             finishedTodo, 
-            deleteTodo ,
-            searchTodo ,
+            deleteTodo,
+            searchTodo,
             loading,
             error,
         }}>
-                    {props.children}
+          {props.children}
         </TodoContext.Provider>
     )
     
 }
+
+export {TodoProvider, TodoContext}

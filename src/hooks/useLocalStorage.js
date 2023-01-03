@@ -14,8 +14,8 @@ export const useLocalStorage = (itemName, startValue) => {
                  
                  
                  if(!localStorageItem) { 
-                     localStorage.setItem('TODOS_V1',JSON.stringify(startValue));
-                     parsedItem=[];
+                     localStorage.setItem(itemName,JSON.stringify(startValue));
+                     parsedItem=startValue;
                  } else {
                      parsedItem = JSON.parse(localStorageItem);
                  };   
@@ -40,4 +40,3 @@ export const useLocalStorage = (itemName, startValue) => {
   
     return  {item, saveItem, loading, error}
 }
-
