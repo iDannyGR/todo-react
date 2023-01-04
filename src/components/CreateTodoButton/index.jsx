@@ -3,7 +3,8 @@ import './CreateTodoButton.css'
 
 const CreateTodoButton = (props) => {
   const onClickButton = ()=>{
-    alert('add new todo');
+        props.setOpenModal(!props.openModal); //Save the value openModal negate
+    //props.openModal ? props.setOpenModal(false) : props.setOpenModal(true);
   }
   return (
     <button className='CreateTodoButton'

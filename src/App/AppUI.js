@@ -5,15 +5,17 @@ import { TodoContext } from '../Context/TodoContext';
 import { TodoItem } from '../components/TodoItem';
 import { TodoList } from '../components/TodoList';
 import { TodoSearch } from '../components/TodoSearch';
+import { Modal } from '../components/Modal';
+import { TodoForm } from '../components/TodoForm';
+
 
 const AppUI = () => {
-   const {error,loading,finishedTodo,deleteTodo,searchTodo} = useContext(TodoContext);
+   const {error,loading,finishedTodo,deleteTodo,searchTodo, openModal, setOpenModal} = useContext(TodoContext);
 
   return (
     <>
         <TodoCounter/>
         <TodoSearch />     
-          {() => (
              <TodoList>
              {error && <p>Error en Carga</p>}
              {loading && <p>Cargando datos</p>}
@@ -28,8 +30,14 @@ const AppUI = () => {
                   />
                ))}
            </TodoList>
-          )}
-        <CreateTodoButton />
+              {!!openModal && (
+                <Modal>
+                  < TodoForm />
+             </Modal>
+              )}
+        <CreateTodoButton 
+            setOpenModal={setOpenModal} openModal={openModal}
+        />
     </>
   )
 };
