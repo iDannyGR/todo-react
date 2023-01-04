@@ -8,6 +8,7 @@ import { TodoSearch } from '../components/TodoSearch';
 
 const AppUI = () => {
    const {error,loading,finishedTodo,deleteTodo,searchTodo} = useContext(TodoContext);
+
   return (
     <>
         <TodoCounter/>
@@ -27,7 +28,7 @@ const AppUI = () => {
                   />
                ))}
            </TodoList>
-          )};
+          )}
         <CreateTodoButton />
     </>
   )
