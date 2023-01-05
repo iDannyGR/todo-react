@@ -6,13 +6,16 @@
     height: 64px;
     width: 64px;
     display: flex;
+    bottom:74px;
+    right: 34px;
     justify-content: center;
     transform: roate(0);
     transition: 0.3s ease;
     text-decoration: none;
     appearance: none;
-    position: fixed;
+    position:fixed;
     z-index: 1;
+    box-shadow: 0px 0px 20px rgba(4, 80, 233, 0.671);
 }
 .CreateTodoButton:hover{
     transform: rotate(270deg);

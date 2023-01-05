@@ -18,7 +18,7 @@ const AppUI = () => {
         <TodoSearch />     
              <TodoList>
              {error && <p>Error en Carga</p>}
-             {loading && <p>Cargando datos</p>}
+             {loading && new Array(5).fill(1).map((a, i) => <TodoItem key={i} />)}
              {(!loading && !searchTodo.length) && <p>Añade tu primer Todo-s</p>}
              {searchTodo.map(todo => (
                   <TodoItem 

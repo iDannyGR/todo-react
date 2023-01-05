@@ -4,29 +4,35 @@ import './TodoForm.css';
 
 const TodoForm = () => {
     const [newTodoValue, setNewTodoValue] = useState('')
-    const {addTodo} = useContext(TodoContext);
+    const {addTodo, setOpenModal} = useContext(TodoContext);
+    
     const onSubmit = (e)=>{
         e.preventDefault();
-        addTodo()
+         addTodo(newTodoValue);
+         setOpenModal(false);
     };
     const onCancel = () => {
-        console.log('cancelar');
+        setOpenModal(false);
     };
     const onAdd = ()=>{
         console.log('Añadida');
     };
-
+    const onChange = (e)=>{
+        setNewTodoValue(e.target.value);
+        
+    }
   return (
     <form onSubmit={onSubmit}>
             <label htmlFor=""> no sabemos que va aca</label>
             <textarea 
-            value={newTodovalue}
+                value={newTodoValue}
+                onChange={onChange}
                 name="" 
                 id="" 
                 cols="35" 
                 rows="8"
                 className='todoForm__textArea'
-                placeholder='Igresa tarea' />
+                placeholder='Ingresa tarea' />
             <div className='todoForm'>
                 <button
                 onClick={onCancel}
