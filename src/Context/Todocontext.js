@@ -25,6 +25,12 @@ function TodoProvider(props) {
         saveTodos(newTodos);
       };
   
+      const addTodo =  (text)=>{
+        const newTodos = [...todos];
+        newTodos.push({text, completed:false}) 
+        saveTodos(newTodos);
+      };
+  
       const deleteTodo =  (title)=>{
         const index = todos.findIndex(todo => todo.text === title);
         const newTodos = [...todos];
@@ -46,6 +52,7 @@ function TodoProvider(props) {
             setsearch,
             finishedTodo, 
             deleteTodo,
+            addTodo,
             searchTodo,
             loading,
             error,
