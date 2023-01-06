@@ -1,4 +1,6 @@
 import {useContext} from 'react';
+import  {Lottie} from 'lottie-react';
+import {DocEdit} from './56-document-outline.json';
 import { CreateTodoButton } from '../components/CreateTodoButton';
 import { TodoCounter } from '../components/TodoCounter';
 import { TodoContext } from '../Context/TodoContext';
@@ -19,7 +21,7 @@ const AppUI = () => {
              <TodoList>
              {error && <p>Error en Carga</p>}
              {loading && new Array(5).fill(1).map((a, i) => <TodoItem key={i} />)}
-             {(!loading && !searchTodo.length) && <p>Añade tu primer Todo-s</p>}
+             {(!loading && !searchTodo.length) && <Lottie animationData={DocEdit} loop={true} />}
              {searchTodo.map(todo => (
                   <TodoItem 
                         completed={todo.completed} 

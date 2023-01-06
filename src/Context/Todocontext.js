@@ -21,7 +21,7 @@ function TodoProvider(props) {
       const finishedTodo =  (title)=>{
         const index = todos.findIndex(todo => todo.text === title);
         const newTodos = [...todos];
-        newTodos[index].completed = true;
+        newTodos[index].completed = !newTodos[index].completed;
         saveTodos(newTodos);
       };
   
