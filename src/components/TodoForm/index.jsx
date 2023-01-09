@@ -8,6 +8,7 @@ const TodoForm = () => {
     
     const onSubmit = (e)=>{
         e.preventDefault();
+        newTodoValue == '' ? alert('valor incorrecto') :
          addTodo(newTodoValue);
          setOpenModal(false);
     };
@@ -18,12 +19,11 @@ const TodoForm = () => {
         console.log('Añadida');
     };
     const onChange = (e)=>{
-        setNewTodoValue(e.target.value);
-        
+        setNewTodoValue(e.target.value);   
     }
   return (
     <form onSubmit={onSubmit}>
-            <label htmlFor=""> no sabemos que va aca</label>
+            <label htmlFor=""> Ingresa tu Tarea </label>
             <textarea 
                 value={newTodoValue}
                 onChange={onChange}

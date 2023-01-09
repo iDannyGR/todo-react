@@ -2,7 +2,6 @@ import {useContext} from 'react';
 import Lottie from "lottie-react";
 import todoAni from "../assets/56-document-outline.json";
 import { CreateTodoButton } from '../components/CreateTodoButton';
-
 import { TodoContext } from '../Context/TodoContext';
 import { TodoItem } from '../components/TodoItem';
 import { TodoList } from '../components/TodoList';
