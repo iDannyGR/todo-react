@@ -8,7 +8,7 @@ const TodoForm = () => {
     
     const onSubmit = (e)=>{
         e.preventDefault();
-        newTodoValue == '' ? alert('valor incorrecto') :
+        newTodoValue === '' ? alert('valor incorrecto') :
          addTodo(newTodoValue);
          setOpenModal(false);
     };
