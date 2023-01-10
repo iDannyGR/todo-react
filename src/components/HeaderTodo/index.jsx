@@ -1,11 +1,10 @@
 import React from 'react';
 import './HeaderTodo.css';
-import { TodoCounter } from '../TodoCounter';
 
-const HeaderTodo = () => {
+const HeaderTodo = ({children}) => {
   return (
     <header className='spikes'>
-      <TodoCounter />
+      {children}
     </header>
   )
 }
