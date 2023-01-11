@@ -1,11 +1,9 @@
-import './index.css';
-import { TodoProvider } from '../Context/TodoContext';
 import React from 'react';
-
+import './index.css';
 import Lottie from "lottie-react";
+import { useTodos } from "../hooks/useTodos";
 import todoAni from "../assets/56-document-outline.json";
 import { CreateTodoButton } from '../components/CreateTodoButton';
-import { TodoContext } from '../Context/TodoContext';
 import { TodoItem } from '../components/TodoItem';
 import { TodoList } from '../components/TodoList';
 import { TodoSearch } from '../components/TodoSearch';
@@ -14,9 +12,9 @@ import { TodoForm } from '../components/TodoForm';
 import { TodoCounter } from '../components/TodoCounter';
 import { HeaderTodo } from '../components/HeaderTodo';
 
-
 const App = () => {
-  const {error,
+  const {
+    error,
     loading,
     finishedTodo,
     deleteTodo,
@@ -25,7 +23,8 @@ const App = () => {
     setOpenModal,
     setsearch,
     completedTodos, 
-    totalTodos} = TodoContext;
+    totalTodos,
+    addTodo} = useTodos();
     return (
       <>
           <HeaderTodo>
@@ -48,7 +47,7 @@ const App = () => {
            </TodoList>
           {!!openModal && (
               <Modal>
-                < TodoForm />
+                < TodoForm addTodo={addTodo} setOpenModal={setOpenModal}/>
               </Modal>
                 )}
           <CreateTodoButton 
