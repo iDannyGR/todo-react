@@ -3,9 +3,15 @@ import './TodoList.css'
 
 const TodoList = (props) => {
   return (
-    <section>
+    <section className='Todolist-container'>
+      {props.error && props.onError()}
+      {props.loading && props.onLoading()}
+      {(!props.loading && !props.totalTodos) && props.onEmptyTodos()}
+      {(!!props.totalTodos && !props.searchTodo.length) && props.onEmptySearchResults(props.search)}
+   
+      {/*map envia informacion directo a props*/} 
         <ul>
-            {props.children}
+            {props.searchTodo.map(props.render || props.children)}
         </ul>
     </section>
   )
