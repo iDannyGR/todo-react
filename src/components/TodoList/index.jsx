@@ -9,7 +9,6 @@ const TodoList = (props) => {
       {(!props.loading && !props.totalTodos) && props.onEmptyTodos()}
       {(!!props.totalTodos && !props.searchTodo.length) && props.onEmptySearchResults(props.search)}
    
-      {/*map envia informacion directo a props*/} 
         <ul>
             {props.searchTodo.map(props.render || props.children)}
         </ul>

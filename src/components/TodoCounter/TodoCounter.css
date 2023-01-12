@@ -5,3 +5,6 @@
     padding: 38px;
     color:white;
 }
+.TodoCounter-Inactive{
+    opacity: 25%;
+}

@@ -32,9 +32,16 @@ const App = () => {
     return (
       <>
           <HeaderTodo>
-            <TodoCounter completedTodos={completedTodos} totalTodos={totalTodos}/>    
+            <TodoCounter 
+              completedTodos={completedTodos} 
+              totalTodos={totalTodos}
+              loading={loading}
+              />    
           </HeaderTodo>
-          <TodoSearch setsearch={setsearch} /> 
+          <TodoSearch 
+            setsearch={setsearch} 
+            loading={loading}
+            /> 
 
           <TodoList
             error={error} 
@@ -45,7 +52,7 @@ const App = () => {
             onError={()=> <TodoError />}
             onLoading={()=> <TodoLoading />}
             onEmptyTodos={()=> <Lottie animationData={todoAni} loop={true}  style={{ height: '300px', width: '300px', margin:'25% auto'  }} />}
-            onEmptySearchResults={(searchText)=> <p>not result to {searchText}</p> && <Lottie animationData={notFount} loop={true} speed={1} />}
+            onEmptySearchResults={(searchText)=> <p>not result to {searchText}</p> && <Lottie animationData={notFount} loop={true} speed={3} />}
             // render= { todo => (
             //   <TodoItem 
             //               completed={todo.completed} 

@@ -1,9 +1,9 @@
 import './TodoCounter.css'
 
-const TodoCounter = ({completedTodos,totalTodos }) => {
+const TodoCounter = ({completedTodos,totalTodos, loading }) => {
   return (
   <header className='spikes'>
-    <h2 className='TodoCounter'>Has completado {completedTodos}  de {totalTodos} TO-DO´s</h2>
+    <h2 className={`TodoCounter ${!!loading && 'TodoCounter-Inactive'}`}>Has completado {completedTodos}  de {totalTodos} TO-DO´s</h2>
   </header>
   )
 }
