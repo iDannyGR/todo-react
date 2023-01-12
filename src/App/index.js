@@ -35,13 +35,13 @@ const App = () => {
             <TodoCounter 
               completedTodos={completedTodos} 
               totalTodos={totalTodos}
-              loading={loading}
+             // loading={loading}
               />    
-          </HeaderTodo>
           <TodoSearch 
             setsearch={setsearch} 
-            loading={loading}
+            // loading={loading}
             /> 
+          </HeaderTodo>
 
           <TodoList
             error={error} 
