@@ -31,15 +31,13 @@ const App = () => {
     addTodo} = useTodos();
     return (
       <>
-          <HeaderTodo>
+          <HeaderTodo loading={loading}>
             <TodoCounter 
               completedTodos={completedTodos} 
               totalTodos={totalTodos}
-             // loading={loading}
               />    
           <TodoSearch 
             setsearch={setsearch} 
-            // loading={loading}
             /> 
           </HeaderTodo>
 

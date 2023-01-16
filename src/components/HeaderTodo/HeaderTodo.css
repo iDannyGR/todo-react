@@ -1,6 +1,6 @@
 
 .spikes {
-    position: absolute;
+    position: relative;
     background: #2c3e50;
     height: 9vh;
     width: 100%;
