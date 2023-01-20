@@ -13,7 +13,10 @@ import { TodoForm } from '../components/TodoForm';
 import { TodoCounter } from '../components/TodoCounter';
 import { HeaderTodo } from '../components/HeaderTodo';
 import {TodoLoading} from '../components/TodoLoading';
-import {TodoError} from '../components/TodoError'
+import {TodoError} from '../components/TodoError';
+import {ChangeAlertStorageListener} from '../components/ChangeAlert';
+
+
 
 const App = () => {
   const {
@@ -80,6 +83,7 @@ const App = () => {
           <CreateTodoButton 
               setOpenModal={setOpenModal} openModal={openModal}
           />
+          <ChangeAlertStorageListener />
       </>
     )
   };
