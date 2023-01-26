@@ -5,9 +5,7 @@ function withStorageListener(WrappedComponent){
     return function WrappedComponentListener (props){
             const [storageChange, setStorageChange] = useState(false);
             window.addEventListener('storage', (change)=>{
-                    change.key === 'TODOS_V1' ?
-                   console.log('hubo cambios')  && setStorageChange(true) :
-                    console.log('nada aqui')
+                    change.key === 'TODOS_V1' && setStorageChange(true) && console.log('hubo cambio') 
             });
         return <WrappedComponent 
                     show={storageChange}
