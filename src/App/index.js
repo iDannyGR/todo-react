@@ -31,7 +31,8 @@ const App = () => {
     setsearch,
     completedTodos, 
     totalTodos,
-    addTodo} = useTodos();
+    addTodo,
+    sincronizeTodos} = useTodos();
     return (
       <>
           <HeaderTodo loading={loading}>
@@ -83,7 +84,9 @@ const App = () => {
           <CreateTodoButton 
               setOpenModal={setOpenModal} openModal={openModal}
           />
-          <ChangeAlertStorageListener />
+          <ChangeAlertStorageListener 
+            sincronize ={sincronizeTodos} 
+            />
       </>
     )
   };

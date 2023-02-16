@@ -2,10 +2,15 @@ import React from 'react';
 import { withStorageListener } from './withStorageListener'
 
 const ChangeAlert = ({show, toggleShow}) => {
-  return (
-    show ? <div>hubo cambio</div> :
-           <div>no cabio nada</div>
-  )
+  if(show){
+    return(
+      <div>
+        <p>hubo cambios</p>
+        <button
+          onClick={()=>toggleShow(!show)}>Reload</button>
+      </div>
+    )
+  }else{return null}
 }
 const ChangeAlertStorageListener  = withStorageListener(ChangeAlert)
 export  {ChangeAlertStorageListener}
