@@ -1,5 +1,6 @@
 import React from 'react';
 import { withStorageListener } from './withStorageListener'
+import './index.css';
 
 const ChangeAlert = ({show, toggleShow}) => {
   if(show){
