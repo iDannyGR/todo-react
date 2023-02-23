@@ -5,7 +5,7 @@ import './index.css';
 const ChangeAlert = ({show, toggleShow}) => {
   if(show){
     return(
-      <div>
+      <div className='containerAlert'>
         <p>hubo cambios</p>
         <button
           onClick={()=>toggleShow(!show)}>Reload</button>
