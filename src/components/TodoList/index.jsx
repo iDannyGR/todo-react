@@ -10,7 +10,7 @@ const TodoList = (props) => {
       {(!!props.totalTodos && !props.searchTodo.length) && props.onEmptySearchResults(props.search)}
    
         <ul>
-            {props.searchTodo.map(props.render || props.children)}
+            {(!props.loading && !props.error) && props.searchTodo.map(props.render || props.children)}
         </ul>
     </section>
   )

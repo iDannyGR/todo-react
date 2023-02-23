@@ -6,9 +6,10 @@ const ChangeAlert = ({show, toggleShow}) => {
   if(show){
     return(
       <div className='containerAlert'>
-        <p>hubo cambios</p>
+        <p className='containerAlert_text'>hubo cambios</p>
         <button
-          onClick={()=>toggleShow(!show)}>Reload</button>
+          onClick={()=>toggleShow(!show)}
+          className='containerAlert_button'>Reload</button>
       </div>
     )
   }else{return null}
