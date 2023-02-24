@@ -14,7 +14,7 @@ import { TodoCounter } from '../components/TodoCounter';
 import { HeaderTodo } from '../components/HeaderTodo';
 import {TodoLoading} from '../components/TodoLoading';
 import {TodoError} from '../components/TodoError';
-import {ChangeAlertStorageListener} from '../components/ChangeAlert';
+import {ChangeAlert} from '../components/ChangeAlert';
 
 
 
@@ -84,7 +84,7 @@ const App = () => {
           <CreateTodoButton 
               setOpenModal={setOpenModal} openModal={openModal}
           />
-          <ChangeAlertStorageListener 
+          <ChangeAlert 
             sincronize ={sincronizeTodos} 
             />
       </>
