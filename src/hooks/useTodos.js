@@ -2,7 +2,13 @@ import { useState } from 'react';
 import { useLocalStorage } from './useLocalStorage';
 
 const  useTodos = () => {
-  const {item:todos, saveItem:saveTodos, loading, error, sincronizeItem:sincronizeTodos} = useLocalStorage('TODOS_V1',[]);
+  const {item:todos,
+         saveItem:saveTodos,
+         loading, 
+         error, 
+         sincronizeItem:sincronizeTodos
+  } = useLocalStorage('TODOS_V1',[]);
+  
   const [search, setsearch] = useState('');
   const [openModal, setOpenModal] = useState(false);
   const completedTodos = todos.filter(todo=> todo.completed).length;
@@ -36,20 +42,27 @@ const  useTodos = () => {
       newTodos.splice(index,1);
       saveTodos(newTodos);
     };
-    return{ 
+
+    const states = {
       completedTodos,
       totalTodos,
       search,
-      setsearch,
-      finishedTodo, 
-      deleteTodo,
-      addTodo,
       searchTodo,
       loading,
       error,
       openModal,
+    };
+
+    const updater = {
+      setsearch,
+      finishedTodo,
+      deleteTodo,
+      addTodo,
       setOpenModal,
-      sincronizeTodos
+      sincronizeTodos,
+    };
+    return{ 
+      states, updater
     };
 
   };

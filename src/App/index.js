@@ -19,75 +19,86 @@ import {ChangeAlert} from '../components/ChangeAlert';
 
 
 const App = () => {
-  const {
-    error,
-    loading,
-    finishedTodo,
-    deleteTodo,
-    search,
-    searchTodo,
-    openModal,
-    setOpenModal,
-    setsearch,
-    completedTodos, 
-    totalTodos,
-    addTodo,
-    sincronizeTodos} = useTodos();
+  const {states, updater} = useTodos();
     return (
+      //    error,
+      // loading,
+      // search,
+      // searchTodo,
+      // openModal,
+      // completedTodos,
+      // totalTodos,
+
+      // finishedTodo,
+      // deleteTodo,
+      // setOpenModal,
+      // setsearch,
+      // addTodo,
+      // sincronizeTodos
       <>
-          <HeaderTodo loading={loading}>
-            <TodoCounter 
-              completedTodos={completedTodos} 
-              totalTodos={totalTodos}
-              />    
-          <TodoSearch 
-            setsearch={setsearch} 
-            /> 
-          </HeaderTodo>
-
-          <TodoList
-            error={error} 
-            loading={loading}
-            searchTodo={searchTodo}
-            totalTodos={totalTodos}
-            search={search}
-            onError={()=> <TodoError />}
-            onLoading={()=> <TodoLoading />}
-            onEmptyTodos={()=> <Lottie animationData={todoAni} loop={true}  style={{ height: '300px', width: '300px', margin:'25% auto'  }} />}
-            onEmptySearchResults={(searchText)=> <p>not result to {searchText}</p> && <Lottie animationData={notFount} loop={true} speed={3} />}
-            // render= { todo => (
-            //   <TodoItem 
-            //               completed={todo.completed} 
-            //               key={todo.text} 
-            //               text = {todo.text} 
-            //               onComplete={()=> finishedTodo(todo.text)}
-            //               onDelete = {()=> deleteTodo(todo.text)}
-            //         />
-            // )}
-            >
-            { todo =>(
-              <TodoItem 
-                    key={todo.text} 
-                    completed={todo.completed} 
-                    text = {todo.text} 
-                    onComplete={()=> finishedTodo(todo.text)}
-                    onDelete = {()=> deleteTodo(todo.text)}
-              />
-            )}
-            </TodoList>                   
-
-          {!!openModal && (
-              <Modal>
-                < TodoForm addTodo={addTodo} setOpenModal={setOpenModal}/>
-              </Modal>
-                )}
-          <CreateTodoButton 
-              setOpenModal={setOpenModal} openModal={openModal}
+        <HeaderTodo loading={states.loading}>
+          <TodoCounter
+            completedTodos={states.completedTodos}
+            totalTodos={states.totalTodos}
           />
-          <ChangeAlert 
-            sincronize ={sincronizeTodos} 
+          <TodoSearch setsearch={updater.setsearch} />
+        </HeaderTodo>
+
+        <TodoList
+          error={states.error}
+          loading={states.loading}
+          searchTodo={states.searchTodo}
+          totalTodos={states.totalTodos}
+          search={states.search}
+          onError={() => <TodoError />}
+          onLoading={() => <TodoLoading />}
+          onEmptyTodos={() => (
+            <Lottie
+              animationData={todoAni}
+              loop={true}
+              style={{ height: "300px", width: "300px", margin: "25% auto" }}
             />
+          )}
+          onEmptySearchResults={(searchText) =>
+            <p>not result to {searchText}</p> && (
+              <Lottie animationData={notFount} loop={true} speed={3} />
+            )
+          }
+          // render= { todo => (
+          //   <TodoItem
+          //               completed={todo.completed}
+          //               key={todo.text}
+          //               text = {todo.text}
+          //               onComplete={()=> finishedTodo(todo.text)}
+          //               onDelete = {()=> deleteTodo(todo.text)}
+          //         />
+          // )}
+        >
+          {(todo) => (
+            <TodoItem
+              key={todo.text}
+              completed={todo.completed}
+              text={todo.text}
+              onComplete={() => updater.finishedTodo(todo.text)}
+              onDelete={() => updater.deleteTodo(todo.text)}
+            />
+          )}
+        </TodoList>
+
+        {!!states.openModal && (
+          <Modal>
+            <TodoForm
+              addTodo={updater.addTodo}
+              setOpenModal={updater.setOpenModal}
+            />
+          </Modal>
+        )}
+        <CreateTodoButton
+          setOpenModal={updater.setOpenModal}
+          openModal={states.openModal}
+        />
+        <ChangeAlert sincronize={updater.sincronizeTodos} />
       </>
-    )
+    );
   };
 export  { App }
