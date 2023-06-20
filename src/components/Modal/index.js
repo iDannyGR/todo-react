@@ -9,4 +9,4 @@ const Modal = ({children}) => {
   );
 }
 
-export  {Modal}
+export  { Modal }
