@@ -8,17 +8,20 @@
 }
 .notfount_title{
     font-size: 3rem;
+    text-shadow: 1px 4px 10px rgba(3, 57, 165, 0.432);
 }
 
 .notfound_btn{
     position: absolute;
     border-radius: 100%;
     border: none;
-    font-size: 25px;
     box-shadow: 1px 4px 10px rgba(3, 57, 165, 0.432);
     bottom: 100px;
     right: 50px;
     width:auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 10px;
     height: 50px;
     width: 50px;
