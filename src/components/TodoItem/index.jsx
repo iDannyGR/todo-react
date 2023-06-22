@@ -13,6 +13,10 @@ const TodoItem = (props) => {
          onClick={props.onDelete}>
           close
         </span>
+        <span className="Icon Icon-delete material-symbols-outlined"
+         onClick={props.onDelete}>
+          close
+        </span>
     </li>
   )
 }
