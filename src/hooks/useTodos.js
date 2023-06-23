@@ -7,15 +7,27 @@ const  useTodos = () => {
          loading, 
          error, 
          sincronizeItem:sincronizeTodos
-  } = useLocalStorage('TODOS_V1',[]);
+  } = useLocalStorage('TODOS_V2',[]);
   
   const [search, setsearch] = useState('');
-  const [openModal, setOpenModal] = useState(false);
   const completedTodos = todos.filter(todo=> todo.completed).length;
   //  doble admiracion es para validar si es true
   const totalTodos = todos.length;
 
   let searchTodo = [];
+
+  const generarId = (longitud) => {
+    const caracteres =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let id = "";
+
+    for (let i = 0; i < longitud; i++) {
+      const indiceAleatorio = Math.floor(Math.random() * caracteres.length);
+      id += caracteres.charAt(indiceAleatorio);
+    }
+
+    return id;
+  };
 
    (!search.length >= 1 ) ? //if no equal of mayor to 1
     searchTodo = [...todos] :
@@ -23,23 +35,35 @@ const  useTodos = () => {
      return todo.text.toLowerCase().includes(search.toLowerCase() );
     });
 
-    const finishedTodo =  (title)=>{
-      const index = todos.findIndex(todo => todo.text === title);
+    const finishedTodo =  (id)=>{
+      const index = todos.findIndex(todo => todo.id === id);
       const newTodos = [...todos];
       newTodos[index].completed = !newTodos[index].completed;
       saveTodos(newTodos);
     };
 
     const addTodo =  (text)=>{
+      const id = generarId(8);
       const newTodos = [...todos];
-      newTodos.push({text, completed:false}) 
+      newTodos.push({text, completed:false, id}) 
       saveTodos(newTodos);
     };
 
-    const deleteTodo =  (title)=>{
-      const index = todos.findIndex(todo => todo.text === title);
+    const deleteTodo =  (id)=>{
+      const index = todos.findIndex(todo => todo.id === id);
       const newTodos = [...todos];
       newTodos.splice(index,1);
+      saveTodos(newTodos);
+    };
+    const findTodo =  (id)=>{
+      const index = todos.findIndex(todo => todo.id === id);
+      return todos[index];
+    };
+
+    const editTodo =  (id, text)=>{
+      const index = todos.findIndex(todo => todo.id === id);
+      const newTodos = [...todos];
+      newTodos[index].text = text;
       saveTodos(newTodos);
     };
 
@@ -50,20 +74,21 @@ const  useTodos = () => {
       searchTodo,
       loading,
       error,
-      openModal,
+      findTodo
     };
 
     const updater = {
       setsearch,
       finishedTodo,
       deleteTodo,
+      editTodo,
       addTodo,
-      setOpenModal,
       sincronizeTodos,
     };
     return{ 
       states, updater
     };
+
 
   };
   

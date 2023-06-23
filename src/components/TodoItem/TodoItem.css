@@ -37,6 +37,14 @@
   .Icon-ckeck--active {
     color: #4caf50;
   }
+   .Icon-edit {
+    position: absolute;
+    top: -24px;
+    right: 10px;
+  }
+  .Icon-edit--active {
+    color: #4caf50;
+  }
   
   .Icon-delete {
     position: absolute;
