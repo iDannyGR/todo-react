@@ -7,18 +7,21 @@ import { useParams } from 'react-router-dom';
 const EditTodo = () => {
  const { updater, states } = useTodos()
  const {id} = useParams()
-const body = states.findTodo(id);
-console.log(body)
-  return (
-    <div className="Todo">
-      <TodoForm
-        submitEvent={(newText)=> updater.editTodo(id, newText)}
-        typeButton={"Editar"}
-        title={"Cambia tu Tarea"}
-        defaultText={body}
-      />
-    </div>
-  );
+ if (states.loading){return <p className='loading'>cargando ...</p>}
+ else{
+   const body = states.findTodo(id);
+   console.log(body)
+    return (
+      <div className="Todo">
+        <TodoForm
+          submitEvent={(newText)=> updater.editTodo(id, newText)}
+          typeButton={"Guardar"}
+          title={"Cambia tu Tarea"}
+          defaultText={body.text}
+        />
+      </div>
+    );
+ }
 }
 
 export default EditTodo

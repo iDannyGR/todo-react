@@ -3,9 +3,8 @@ import React, {useState} from 'react';
 import './TodoForm.css';
 import { useNavigate } from 'react-router-dom';
 
-const TodoForm = ({ submitEvent, typeButton, title }) => {
-  
-  const [newTodoValue, setNewTodoValue] = useState("");
+const TodoForm = ({ submitEvent, typeButton, title, defaultText }) => {
+  const [newTodoValue, setNewTodoValue] = useState(defaultText || "");
   const navigate = useNavigate();
 
   const onSubmit = (e) => {
