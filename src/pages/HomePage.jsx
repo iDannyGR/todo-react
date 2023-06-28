@@ -57,7 +57,9 @@ const HomePage = () => {
             completed={todo.completed}
             text={todo.text}
             onComplete={() => updater.finishedTodo(todo.id)}
-            onEdit={() => navigate(`/edit/${todo.id}`)}
+            onEdit={() => navigate(`/edit/${todo.id}`, {
+              state:{todo}
+            })}
             onDelete={() => updater.deleteTodo(todo.id)}
           />
         )}

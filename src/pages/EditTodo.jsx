@@ -2,26 +2,35 @@ import React from 'react';
 import { TodoForm } from '../components/TodoForm';
 import "../assets/newTodo.css";
 import { useTodos } from '../hooks/useTodos';
-import { useParams } from 'react-router-dom';
+import { useParams,  useLocation } from 'react-router-dom';
 
 const EditTodo = () => {
+
  const { updater, states } = useTodos()
+ const { state } = useLocation()
  const {id} = useParams()
- if (states.loading){return <p className='loading'>cargando ...</p>}
- else{
-   const body = states.findTodo(id);
-   console.log(body)
-    return (
-      <div className="Todo">
-        <TodoForm
-          submitEvent={(newText)=> updater.editTodo(id, newText)}
-          typeButton={"Guardar"}
-          title={"Cambia tu Tarea"}
-          defaultText={body.text}
-        />
-      </div>
-    );
+  let textVar; 
+
+ if(state.todo){
+  textVar = state.todo.text
  }
+ else if (states.loading){
+  return <p className='loading'>cargando ...</p>}
+ else{
+ textVar = states.findTodo(id);
+  
+ }
+
+ return (
+   <div className="Todo">
+     <TodoForm
+       submitEvent={(newText) => updater.editTodo(id, newText)}
+       typeButton={"Guardar"}
+       title={"Cambia tu Tarea"}
+       defaultText={textVar}
+     />
+   </div>
+ );
 }
 
 export default EditTodo
