@@ -13,20 +13,24 @@ import { HeaderTodo } from "../components/HeaderTodo";
 import { TodoLoading } from "../components/TodoLoading";
 import { TodoError } from "../components/TodoError";
 import { ChangeAlert } from "../components/ChangeAlert";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const HomePage = () => {
   const { states, updater } = useTodos();
   const navigate = useNavigate()
+  const [params, setParams]= useSearchParams()
   return (
-
     <>
       <HeaderTodo loading={states.loading}>
         <TodoCounter
           completedTodos={states.completedTodos}
           totalTodos={states.totalTodos}
         />
-        <TodoSearch setsearch={updater.setsearch} />
+        <TodoSearch
+          searchValue={states.search}
+          setsearch={updater.setsearch}
+          params={params}
+        />
       </HeaderTodo>
 
       <TodoList
@@ -49,7 +53,6 @@ const HomePage = () => {
             <Lottie animationData={notFount} loop={true} speed={3} />
           )
         }
-
       >
         {(todo) => (
           <TodoItem
@@ -57,17 +60,17 @@ const HomePage = () => {
             completed={todo.completed}
             text={todo.text}
             onComplete={() => updater.finishedTodo(todo.id)}
-            onEdit={() => navigate(`/edit/${todo.id}`, {
-              state:{todo}
-            })}
+            onEdit={() =>
+              navigate(`/edit/${todo.id}`, {
+                state: { todo },
+              })
+            }
             onDelete={() => updater.deleteTodo(todo.id)}
           />
         )}
       </TodoList>
 
-      <CreateTodoButton 
-        onclick={()=> navigate('/new')}
-      />
+      <CreateTodoButton onclick={() => navigate("/new")} />
       <ChangeAlert sincronize={updater.sincronizeTodos} />
     </>
   );

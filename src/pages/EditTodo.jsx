@@ -8,19 +8,17 @@ const EditTodo = () => {
 
  const { updater, states } = useTodos()
  const { state } = useLocation()
- const {id} = useParams()
+ const { id } = useParams()
   let textVar; 
 
- if(state.todo){
-  textVar = state.todo.text
- }
- else if (states.loading){
-  return <p className='loading'>cargando ...</p>}
- else{
- textVar = states.findTodo(id);
-  
- }
-
+      if(state && state.todo){
+        textVar = state.todo.text
+          }
+      else if (states.loading){
+        return <p className='loading'>cargando ...</p>
+      } else{
+      textVar = states.findTodo(id).text;
+          }
  return (
    <div className="Todo">
      <TodoForm
